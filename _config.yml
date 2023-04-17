@@ -22,9 +22,9 @@ title: Tora 2338
 email: tora2338.com
 description: >- # this means to ignore newlines until "baseurl:"
   Yigal is a slappy boy
-domain: torah2338.github.io
-url: https://torah2338.github.io
-baseurl: /tora # the subpath of your site, e.g. /blog
+domain: torah2338.co.il
+url: https://torah2338.co.il
+#baseurl: /tora # the subpath of your site, e.g. /blog
 permalink: /:categories/:title
 
 # Build settings
