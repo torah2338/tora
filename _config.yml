@@ -25,6 +25,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 domain: torah2338.github.io
 url: https://torah2338.github.io
 baseurl: /tora # the subpath of your site, e.g. /blog
+permalink: /:categories/:title
 
 # Build settings
 theme: minima

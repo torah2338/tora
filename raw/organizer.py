@@ -18,8 +18,6 @@ if __name__ == '__main__':
                         if match_object:
                             # Makes folder
                             parsha_name = match_object.groups()[0]
-                            if not os.path.exists("../_posts/" + parsha_name):
-                                os.mkdir("../_posts/" + parsha_name)
 
                             # Copies the file into the new folder structure
 
@@ -30,7 +28,7 @@ if __name__ == '__main__':
                             #new_name = c_date.year + "-" + c_date.month + "-" + c_date.day + "-" + parsha_name + "/" + \
                             #           year[-2] + ".docx"
 
-                            shutil.copy(old_path, "../_posts/" + parsha_name)
+                            shutil.copy(old_path, "../_posts/")
 
 
                             # Convert it to html
@@ -42,17 +40,21 @@ if __name__ == '__main__':
                             title = txt.partition('\n')[0]
 
                             # Extract the title
-                            new_name = "{}-{}-{}-{}-{}.html".format(c_date.year, c_date.month, c_date.day, parsha_name, title)
-                            os.rename("../_posts/"+parsha_name + "/" + parsha_raw, "../_posts/" + parsha_name + "/"+new_name)
+                            new_name = "{}-{}-{}-{}-{}.html".format(c_date.year, c_date.month, c_date.day, parsha_name, title.split(':')[1])
+                            os.rename("../_posts/"+ parsha_raw, "../_posts/" + new_name)
 
+                            year_letter = year[-2]
+
+                            #if year_letter is 'א':
+                            #    year_num =
 
                             # Adding front matter
 
-                            front_matter = "---\nlayout: post\ntitle:" + title.split(':')[1] + "\n---\n"
+                            front_matter = "---\nlayout: post\ntitle: {}\ncategory: {}\n---\n".format(title.split(':')[1], parsha_name)
                             html = pypandoc.convert_file(old_path, to = 'html', format = 'docx')
 
                             html = ''.join(html.partition('</p>')[1:])[4:]
-                            f = open("../_posts/" + parsha_name + "/"+new_name, 'w')
+                            f = open("../_posts/" +new_name, 'w')
                             f.write(front_matter)
                             f.write(html)
 
