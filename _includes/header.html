@@ -11,9 +11,7 @@
         <button class="dropbtn">{{ book.title }}</button>
         <div class="dropdown-content">
           {% for parsha in book.subfolderitems %}
-          {% for post in site.categories[parsha.page] limit: 1%}
-          <a href="{{ post.url }}">{{ parsha.page }}</a>
-          {% endfor %}
+          <a href="/category/{{ parsha.page }}">{{ parsha.page }}</a>
           {% endfor %}
         </div>
       </div>
