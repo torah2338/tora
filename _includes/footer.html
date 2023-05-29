@@ -24,10 +24,14 @@
       <div class="footer-col footer-col-2">
         {%- include social.html -%}
       </div>
+      <form
+      action="https://formspree.io/f/mlekkvwr"
+      method="POST">
 
-      <div class="footer-col footer-col-3">
-        <p>{{- site.description | escape -}}</p>
-      </div>
+      <label for="mail">לקבלת הדף השבועי למייל:</label>
+      <input type="email" name="email" id="mail"/>
+      <button type="submit">שלח</button>
+    </form>
     </div>
 
   </div>
