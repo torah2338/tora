@@ -28,7 +28,9 @@ if __name__ == '__main__':
                             old_path = year + "/" + book + "/" + parsha_raw
                             #old_path = "../_posts/" + parsha_name + "/" + parsha_raw
 
-                            c_date = datetime.fromtimestamp(os.stat(old_path).getctime())
+                            #c_date = datetime.fromtimestamp(os.stat(old_path).getctime())
+                            c_date = datetime.fromtimestamp(os.path.getctime(old_path))
+
                             #new_name = c_date.year + "-" + c_date.month + "-" + c_date.day + "-" + parsha_name + "/" + \
                             #           year[-2] + ".docx"
 
