@@ -13,11 +13,11 @@ if __name__ == '__main__':
     os.mkdir("_category")
 
     # start from project dir
-    for year in os.listdir("raw"):
-        if os.path.isdir("raw/" + year):
-            for book in os.listdir("raw/" + year):
-                if os.path.isdir("raw/" + year + "/" + book):
-                    for parsha_raw in os.listdir("raw/" + year + "/" + book):
+    for year in os.listdir():
+        if os.path.isdir(year):
+            for book in os.listdir(year):
+                if os.path.isdir(year + "/" + book):
+                    for parsha_raw in os.listdir(year + "/" + book):
                         match_object = re.match(r'\d.\s(.*)\sשנה.*.docx', parsha_raw)
                         if match_object:
                             # Makes folder
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
                             # Copies the file into the new folder structure
 
-                            old_path = "raw/" + year + "/" + book + "/" + parsha_raw
+                            old_path = year + "/" + book + "/" + parsha_raw
                             #old_path = "../_posts/" + parsha_name + "/" + parsha_raw
 
                             c_date = datetime.fromtimestamp(os.stat(old_path).st_birthtime)
