@@ -18,7 +18,6 @@ if __name__ == '__main__':
             for book in os.listdir("raw/" + year):
                 if os.path.isdir("raw/" + year + "/" + book):
                     for parsha_raw in os.listdir("raw/" + year + "/" + book):
-                        print(parsha_raw)
                         match_object = re.match(r'\d.\s(.*)\sשנה.*.docx', parsha_raw)
                         if match_object:
                             # Makes folder
@@ -46,6 +45,7 @@ if __name__ == '__main__':
 
                             # Extract the title
                             new_name = "{}-{}-{}-{}-{}.html".format(c_date.year, c_date.month, c_date.day, parsha_name, title.split(':')[1])
+                            new_name = re.sub(r'[\\/*?:"<>|]',"",new_name)
                             os.rename("_posts/"+ parsha_raw, "_posts/" + new_name)
 
                             year_letter = year[-2]
