@@ -45,7 +45,7 @@ if __name__ == '__main__':
 
                             # Extract the title
                             new_name = "{}-{}-{}-{}-{}.html".format(c_date.year, c_date.month, c_date.day, parsha_name, title.split(':')[1])
-                            new_name = re.sub(r'[\\/*?:"<>|]',"",new_name)
+                            new_name = re.sub(r'[\\/*?:"<>|]',"",new_name).strip()
                             os.rename("_posts/"+ parsha_raw, "_posts/" + new_name)
 
                             year_letter = year[-2]
